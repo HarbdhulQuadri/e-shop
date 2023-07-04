@@ -3,6 +3,8 @@ const express = require('express');
 const { useTreblle } = require('treblle');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const compression = require('compression');
+
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -17,11 +19,48 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression()); // Enable response compression
+app.use((req, res, next) => {
+  req.headers.accept = 'application/json';
+  next();
+});
+// Set the X-Content-Type-Options header
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  res.setHeader('X-Frame-Options', 'deny'); // or 'sameorigin'
+  res.setHeader('Content-Security-Policy', 'default-src \'self\'');
+  next();
+});
+
+// Middleware to check Content-Security-Policy header
+app.use((req, res, next) => {
+  const contentSecurityPolicyHeader = res.getHeader('Content-Security-Policy');
+  if (!contentSecurityPolicyHeader) {
+    return res.status(500).json({
+      error: 'Content-Security-Policy header is missing.',
+    });
+  }
+  next();
+});
+
+// Middleware to check Accept header
+app.use((req, res, next) => {
+  const acceptHeader = req.headers.accept;
+  if (!acceptHeader || !acceptHeader.includes('application/json')) {
+    return res.status(400).json({
+      error: 'Invalid Accept header. Only application/json is supported.',
+    });
+  }
+  next();
+});
 
 // v1
 const RouterV1 = require('./src/v1/router/router');
