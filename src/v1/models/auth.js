@@ -1,6 +1,8 @@
 const DbConnection = require("../../database/connection");
 const moment = require("moment-timezone");
 const Dbname = require("../../database/name")
+const { v4: uuidv4 } = require('uuid');
+
 
 const userCollection = Dbname.UserCollection;
 
@@ -9,7 +11,7 @@ const register = async (data) => {
     let newvalues = {
         $set: {
 
-            userID: data.userID,
+            userID: uuidv4(),
             emailAddress: data.emailAddress,
             phoneNumber: data.phoneNumber,
             password: data.password,
@@ -20,7 +22,7 @@ const register = async (data) => {
             username:data.username,
              businessName:data.businessName,
              branch:data.branch ||[],
-             apiKey:data.apiKey, 
+             apiKey:uuidv4(), 
              createdAt:data.createdAt,
         }
     };
@@ -38,7 +40,7 @@ const getShortProfile = async (data) => {
         projection: {
           // to ask what the zeros and ones is for 
           _id: 0, userID: 1,emailAddress: 1, phoneNumber: 1,  password: 1, status: 1, emailverify: 1,
-            fullName: 1,
+            fullName: 1,apiKey:1,businessName:1,branch:1,
         }
     };
     try {

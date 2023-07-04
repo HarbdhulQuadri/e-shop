@@ -2,6 +2,7 @@
 // why not convert to ES module
 // message type 
 exports.emailTaken = "Email Address is taken";
+exports.apiKeyMissing = "api Key is Missing";
 exports.phoneTaken = "Phone number is taken";
 exports.userNameTaken = "userName is taken";
 exports.underAge = "under 18 are not allowed";
