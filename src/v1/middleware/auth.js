@@ -51,7 +51,7 @@ const register = [
     body('businessName').exists().withMessage('businessName is required').trim(),
     (req, res, next) => {
         validation(req, res, next);
-    },       
+    },   
 ]
 
 const login = [ 

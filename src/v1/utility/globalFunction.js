@@ -70,35 +70,7 @@ const hashPassword = (password) => {
     });
 }
 
-const is18orOlder = (dateString) => {
-    return new Promise(resolve => {
-        const dob = new Date(dateString);
-        const dobPlus18 = new Date(dob.getFullYear() + 18, dob.getMonth(), dob.getDate());
-        resolve(dobPlus18.valueOf() <= Date.now())
-    });
-}
 
-// format pairID
-const formPairID = (senderID, receiverID) => {
-    return new Promise(resolve => {
-        if (senderID < receiverID) {
-            resolve(senderID + receiverID);
-        } else {
-            resolve(receiverID + senderID)
-        }
-    });
-}
-
-const FormatFootballByImportance = (data) => {
-    return new Promise(resolve => {
-        const Importance = {
-            152: 3,
-            207 : 2,
-            3 : 1
-        };
-        resolve(sort(data).desc(tag => Importance[tag.league_id] || 0));
-    });
-}
 
 module.exports = {
     emailRegexp,
@@ -108,7 +80,5 @@ module.exports = {
     resPayloadMessage,
     httpCall,
     hashPassword,
-    is18orOlder,
-    formPairID,
-    FormatFootballByImportance
+   
 }

@@ -1,9 +1,9 @@
-const globalFunction = require("../../utility/globalFunction");
-const globalMessage = require("../../utility/globalMessage");
+const globalFunction = require("../utility/globalFunction")
+const globalMessage = require("../utility/globalMessage");
 const userModel = require("../models/auth");
 const tokenModel = require("../models/token");
 const jwt = require('jsonwebtoken');
-let uuid = require("uuid");
+const  v4   = require('uuid');
 const bcrypt = require('bcrypt');
 
 
@@ -11,7 +11,8 @@ const register = async (data) => {
     try {
          await checkRegisterUserExist(data);
         data.password = await globalFunction.hashPassword(data.password)
-        data.userID = uuid.v4
+        data.userID = v4();
+        data.apiKey = v4();
         await userModel.register(data);
         delete data.password
         const result_1 = await addAccessToken(data);

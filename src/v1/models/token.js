@@ -1,7 +1,8 @@
-const userTokenCollection = Dbname.userTokenCollection
 const DbConnection = require("../../database/connection");
 const moment = require("moment-timezone");
 const Dbname = require("../../database/name")
+const userTokenCollection = Dbname.userTokenCollection
+
 
 const addToken = async (data) => {
     let myquery = { userID: data.userID };
