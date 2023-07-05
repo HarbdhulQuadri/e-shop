@@ -67,7 +67,6 @@ mongod --dbpath <mongodb-uri>
 Start the API server:
 
 shell
-Copy code
 npm start
 The server will start running on the specified port (default: 8080) and establish a connection to the MongoDB database.
 
