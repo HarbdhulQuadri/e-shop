@@ -15,7 +15,7 @@ E-Shop is a simple web application that allows users to scan a product's URL(Bar
 1. Clone the repository to your local machine.
 2. Install the required dependencies by running `npm install`.
 3. Start the application by running `npm start`.
-4. Access the app in your web browser by navigating to `http://localhost:3000`.
+4. Access the app in your web browser by navigating to `http://localhost:8080`.
 5. Scan the product's barcode by clicking the camera button on the home page.
 6. Click the "Generate Invoice" button to initiate the process.
 7. Review the retrieved product information on the preview page.
@@ -27,6 +27,63 @@ E-Shop is a simple web application that allows users to scan a product's URL(Bar
 E-Shop is built using the following technologies:
 
 - **Back-end**: Node.js, Express.js
+
+# API Setup Guide
+
+This guide will walk you through the steps to set up and run the API server for your application.
+
+## Prerequisites
+
+Before you begin, ensure that you have the following prerequisites installed:
+
+- Node.js 
+- MongoDB 
+
+## Installation
+
+1. Clone the repository to your local machine:
+
+   ```shell
+   git clone https://github.com/HarbdhulQuadri/e-shop/
+Navigate to the project directory:
+
+shell
+Copy code
+cd e-shop
+Install the dependencies:
+
+shell
+npm install
+
+Set up the environment variables:
+
+Rename the .env.example file to .env.
+Open the .env file and update the values according to your configuration.
+Start the MongoDB server:
+
+shell
+# Replace <mongodb-uri> with the MongoDB connection URI
+mongod --dbpath <mongodb-uri>
+Start the API server:
+
+shell
+Copy code
+npm start
+The server will start running on the specified port (default: 8080) and establish a connection to the MongoDB database.
+
+API Endpoints
+The following API endpoints are available:
+
+- POST /api/v1/auth/register - Register a new user.
+- POST /api/v1/auth/login - User login.
+- POST /api/v1/product - Create a new product.
+- PATCH /api/v1/product/:productID - Update a product by ID.
+- GET /api/v1/product/:productID - Get a product by ID.
+- GET /api/v1/product - Get all products.
+- DELETE /api/v1/product/:productID - Delete a product by ID.
+
+Testing
+To run the test suite, use the following command:
 
 ## License
 

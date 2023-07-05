@@ -1,79 +1,59 @@
-const productService = require("../services/products")
+const productService = require("../services/products");
 
 const createProduct = async (req, res) => {
-    try {
-        let body = req.body;
-        let result = await productService.createProduct(body)
-        console.log(result)
-        let statucode = result.code
-        delete result.code
-        res.status(statucode).json(result);
-    } catch (error) {
-        let code = error.code;
-        delete error.code;
-        res.status(code).json(error)
-    }
+  try {
+    const body = req.body;
+    const result = await productService.createProduct(body);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(403).json({ error: true, message: error.message });
+  }
 };
 
 const editProduct = async (req, res) => {
-    try {
-        let body = req.body;
-        let result = await productService.editProduct(body)
-        console.log(result)
-        let statucode = result.code
-        delete result.code
-        res.status(statucode).json(result);
-    } catch (error) {
-        let code = error.code;
-        delete error.code;
-        res.status(code).json(error)
-    }
+  try {
+    const body = req.body;
+    body.productID= req.params.productID;
+    const result = await productService.editProduct(body);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(403).json({ error: true, message: error.message });
+  }
 };
 
 const getAllProducts = async (req, res) => {
-    try {
-        let body = req.body;
-        let result = await productService.getAllProducts(body)
-        res.json(result);
-    } catch (error) {
-        let code = error.code;
-        delete error.code;
-        res.status(code).json(error)
-    }
+  try {
+    const result = await productService.getAllProducts();
+    res.json(result);
+  } catch (error) {
+    res.status(403).json({ error: true, message: error.message });
+  }
 };
 
 const getOneProduct = async (req, res) => {
-    try {
-        let body = req.body;
-        body.productID= req.params.productID;
-        const result = await productService.getOneProduct(body)
-        let code = result.code;
-        delete result.code;
-        res.status(code).json(result)
-    } catch (error) {
-        let code = error.code;
-        delete error.code;
-        res.status(code).json(error)
-    }
-}
+  try {
+    const productId = req.params.productID;
+    const result = await productService.getOneProduct(productId);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(403).json({ error: true, message: error.message });
+  }
+};
 
 const deleteProduct = async (req, res) => {
-    try {
-        let body = req.body;
-        body.productID= req.params.productID;
-        let result = await productService.deleteProduct(body)
-        res.json(result);
-    } catch (error) {
-        let code = error.code;
-        delete error.code;
-        res.status(code).json(error)
-    }
+  try {
+    const productId = req.params.productID;
+    const result = await productService.deleteProduct(productId);
+    res.json(result);
+  } catch (error) {
+    res.status(403).json({ error: true, message: error.message });
+  }
 };
 
 module.exports = {
-    createProduct,
-    editProduct,
-    getAllProducts,
-    getOneProduct,
-    deleteProduct
-}
+  createProduct,
+  editProduct,
+  getAllProducts,
+  getOneProduct,
+  deleteProduct
+};
