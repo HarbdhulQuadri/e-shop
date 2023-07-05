@@ -9,7 +9,7 @@ const createProduct = async (data) => {
         return ({
             error: false,
             message: "createProduct Sucessfull",
-            result:result.data,
+            result: data,
             code: 200
         })
     } catch (error) {

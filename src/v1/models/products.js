@@ -22,7 +22,7 @@ const createProduct = async (data) => {
         $set: {
             productID: uuidv4(),
             productName:data.productName,
-            barcode: data.title,
+            barcode: data.barcode,
             description: data.description,
             price: data.price,
             quantity: data.quantity,
@@ -52,8 +52,13 @@ const editProduct = async (data) => {
     let myquery = { productID: data.productID };
     let update = { 
         $set: {
-            title: data.title,
+            productName:data.productName,
+            barcode: data.barcode,
             description: data.description,
+            price: data.price,
+            quantity: data.quantity,
+            category: data.category,
+            brand: data.brand,
     }
 };
     let options = { upsert: true }

@@ -18,8 +18,8 @@ router.get("/api/v1/", limiter,(req, res) => {
 router.post('/api/v1/auth/register', authMiddleware.register, authController.Register);
 router.post('/api/v1/auth/login',limiter, authMiddleware.login, authController.Login);
 router.post('/api/v1/product', authMiddleware.getToken, productController.createProduct);
-router.patch('/api/v1/product/:productID',authMiddleware.getToken, productController.editProduct);
-router.get('/api/v1/product/:productID',authMiddleware.getToken, productController.getOneProduct);
-router.get('/api/v1/product', authMiddleware.getToken, productController.getAllProducts);
-router.delete('/api/v1/product/:productID', authMiddleware.getToken, productController.deleteProduct);
+router.patch('/api/v1/product/:productID',limiter,authMiddleware.getToken, productController.editProduct);
+router.get('/api/v1/product/:productID',limiter,authMiddleware.getToken, productController.getOneProduct);
+router.get('/api/v1/product',limiter, authMiddleware.getToken, productController.getAllProducts);
+router.delete('/api/v1/product/:productID',limiter, authMiddleware.getToken, productController.deleteProduct);
 module.exports = router;
