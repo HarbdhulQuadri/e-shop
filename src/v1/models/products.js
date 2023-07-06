@@ -97,13 +97,21 @@ const getOneProduct = async (data) => {
     let myquery = { productID: data.productID };
     try {
         const result = await DbConnection.findData(productCollection,myquery);
-        return ({ result: result, error: false, message: "Data Fetched Successfully",status:200,});
+        return ({ result: result.data, error: false, message: "Data Fetched Successfully",status:200,});
     } catch (error) {
         return ({ error: true, message: error.message,status:400 })
     }
 }
-// Add Sections here 
-// add Instructors here 
+
+// const getOneProduct = async (data) => {
+//     let myquery = { productID: data.productID };
+//     try {
+//         const result = await DbConnection.findData(productCollection,myquery);
+//         return ({ result: result.data, error: false, message: "Data Fetched Successfully",status:200,});
+//     } catch (error) {
+//         return ({ error: true, message: error.message,status:400 })
+//     }
+// }
 
 
 module.exports ={

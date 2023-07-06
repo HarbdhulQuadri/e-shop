@@ -80,6 +80,11 @@ The following API endpoints are available:
 - GET /api/v1/product/:productID - Get a product by ID.
 - GET /api/v1/product - Get all products.
 - DELETE /api/v1/product/:productID - Delete a product by ID.
+-  POST /api/v1/invoice - Create a new invoice.
+-  GET /api/v1/invoice - Get all invoices.
+-  GET /api/v1/invoice/:invoiceID - Get an invoice by ID.
+- DELETE /api/v1/invoice/:invoiceID - Delete an invoice by ID.
+
 
 Testing
 To run the test suite, use the following command:

@@ -11,12 +11,19 @@ const createProduct = async (data) => {
 
 const editProduct = async (data) => {
   try {
+    console.log(data);
     const result = await productModel.editProduct(data);
-    return { success: true, data: result, message: "Product updated successfully", status: 200 };
+        return {
+      success: true,
+      data,
+      message: "Product updated successfully",
+      status: 200,
+    };
   } catch (error) {
     throw new Error("Failed to update product");
   }
 };
+
 
 const getAllProducts = async () => {
   try {
@@ -27,9 +34,9 @@ const getAllProducts = async () => {
   }
 };
 
-const getOneProduct = async (productId) => {
+const getOneProduct = async (data) => {
   try {
-    const result = await productModel.getOneProduct(productId);
+    const result = await productModel.getOneProduct(data);
     if (result) {
       return { success: true, data: result, message: "Product retrieved successfully", status: 200 };
     } else {
@@ -39,6 +46,8 @@ const getOneProduct = async (productId) => {
     throw new Error("Failed to retrieve product");
   }
 };
+
+
 
 const deleteProduct = async (productId) => {
   try {

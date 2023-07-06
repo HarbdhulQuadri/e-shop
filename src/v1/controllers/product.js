@@ -30,21 +30,26 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+
+
 const getOneProduct = async (req, res) => {
   try {
-    const productId = req.params.productID;
-    const result = await productService.getOneProduct(productId);
+    const body = req.body;
+    body.productID= req.params.productID;
+    const result = await productService.getOneProduct(body);
     res.status(200).json(result);
   } catch (error) {
     res.status(403).json({ error: true, message: error.message });
   }
 };
 
+
 const deleteProduct = async (req, res) => {
   try {
-    const productId = req.params.productID;
-    const result = await productService.deleteProduct(productId);
-    res.json(result);
+    const body = req.body;
+    body.productID= req.params.productID;
+    const result = await productService.deleteProduct(body);
+    res.status(200).json(result);
   } catch (error) {
     res.status(403).json({ error: true, message: error.message });
   }
