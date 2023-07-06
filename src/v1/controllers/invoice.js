@@ -1,10 +1,21 @@
-const invoiceService = require("../services/invoice");
+const productService = require("../services/products");
 
 const createInvoice = async (req, res) => {
   try {
     const body = req.body;
-    const result = await invoiceService.createInvoice(body);
-    res.status(201).json(result);
+    const result = await productService.createInvoice(body);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(403).json({ error: true, message: error.message });
+  }
+};
+
+const editInvoice = async (req, res) => {
+  try {
+    const body = req.body;
+    body.productID= req.params.productID;
+    const result = await productService.editInvoice(body);
+    res.status(200).json(result);
   } catch (error) {
     res.status(403).json({ error: true, message: error.message });
   }
@@ -12,29 +23,32 @@ const createInvoice = async (req, res) => {
 
 const getAllInvoices = async (req, res) => {
   try {
-    const result = await invoiceService.getAllInvoices();
+    const result = await productService.getAllInvoices();
     res.json(result);
   } catch (error) {
     res.status(403).json({ error: true, message: error.message });
   }
 };
 
+
+
 const getOneInvoice = async (req, res) => {
   try {
     const body = req.body;
-    body.invoiceID = req.params.invoiceID;
-    const result = await invoiceService.getOneInvoice(body);
+    body.invoiceID= req.params.invoiceID;
+    const result = await productService.getOneInvoice(body);
     res.status(200).json(result);
   } catch (error) {
     res.status(403).json({ error: true, message: error.message });
   }
 };
 
+
 const deleteInvoice = async (req, res) => {
   try {
     const body = req.body;
-    body.invoiceID = req.params.invoiceID;
-    const result = await invoiceService.deleteInvoice(body);
+    body.productID= req.params.productID;
+    const result = await productService.deleteInvoice(body);
     res.status(200).json(result);
   } catch (error) {
     res.status(403).json({ error: true, message: error.message });
@@ -43,6 +57,7 @@ const deleteInvoice = async (req, res) => {
 
 module.exports = {
   createInvoice,
+  editInvoice,
   getAllInvoices,
   getOneInvoice,
   deleteInvoice

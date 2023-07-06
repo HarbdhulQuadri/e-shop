@@ -22,14 +22,15 @@ const getOneInvoice = async (data) => {
   try {
     const result = await invoiceModel.getOneInvoice(data);
     if (result) {
-      return { success: true, data: result, message: "Invoice retrieved successfully", status: 200 };
+      return { success: true, data: result, message: "invoice retrieved successfully", status: 200 };
     } else {
-      throw new Error("Invoice not found");
+      throw new Error("Product not found");
     }
   } catch (error) {
-    throw new Error("Failed to retrieve invoice");
+    throw new Error("Failed to retrieve product");
   }
 };
+
 
 const deleteInvoice = async (data) => {
   try {

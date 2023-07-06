@@ -69,8 +69,10 @@ link to full postman documentation https://documenter.getpostman.com/view/827065
 The following API endpoints are available: 
 - BaseUrl https://localhost:8080/
 
+
 - POST /api/v1/auth/register - Register a new user.
 - POST /api/v1/auth/login - User login.
+the jwt token will be needed when testing the 
 - POST /api/v1/product - Create a new product.
 - PATCH /api/v1/product/:productID - Update a product by ID.
 - GET /api/v1/product/:productID - Get a product by ID.
