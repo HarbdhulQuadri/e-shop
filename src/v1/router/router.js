@@ -3,6 +3,8 @@ const router = express.Router();
 
 // Auth
 const authMiddleware = require("../middleware/auth");
+const productMiddleware = require("../middleware/product");
+
 const limiter = require("../middleware/rateLimitMiddleware");
 
 // Controllers
@@ -31,6 +33,7 @@ router.post(
 // product
 router.post(
   "/api/v1/product",
+  productMiddleware.createProduct,
   authMiddleware.getToken,
   productController.createProduct
 );
