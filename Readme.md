@@ -43,14 +43,15 @@ Before you begin, ensure that you have the following prerequisites installed:
 
 1. Clone the repository to your local machine:
 
-   ```shell
+   ```shell```
    git clone https://github.com/HarbdhulQuadri/e-shop/
 Navigate to the project directory:
 
+```shell```
 cd e-shop
 Install the dependencies:
 
-shell
+```shell```
 npm install
 
 Set up the environment variables:
@@ -58,17 +59,15 @@ Set up the environment variables:
 Open the .env file and update the values according to your configuration.
 Start the MongoDB server:
 
-shell
-# Replace <mongodb-uri> with the MongoDB connection URI
-mongod --dbpath <mongodb-uri>
-Start the API server:
-
-shell
+```shell```
 npm start
 The server will start running on the specified port (default: 8080) and establish a connection to the MongoDB database.
 
 API Endpoints
-The following API endpoints are available: https://documenter.getpostman.com/view/8270659/2s93zCb2TA
+link to full postman documentation https://documenter.getpostman.com/view/8270659/2s93zCb2TA
+
+The following API endpoints are available: 
+- BaseUrl https://localhost:8080/
 
 - POST /api/v1/auth/register - Register a new user.
 - POST /api/v1/auth/login - User login.
