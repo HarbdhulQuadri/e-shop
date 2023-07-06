@@ -1,6 +1,7 @@
 # E-SHOP
 
 E-Shop is a simple web application that allows users to scan a product's URL(Barcode) and generate an invoice for that product. It is designed to simplify the process of creating invoices for purchased products, making it convenient for both individuals and businesses. It is also designed for participation in #APISecurityHackathon organised by Treblle.
+ - Integrated Treblle for API security and monitring purpose.
 
 ## Features
 
@@ -15,7 +16,7 @@ E-Shop is a simple web application that allows users to scan a product's URL(Bar
 1. Clone the repository to your local machine.
 2. Install the required dependencies by running `npm install`.
 3. Start the application by running `npm start`.
-4. Access the app in your web browser by navigating to `http://localhost:8080`.
+4. Access the app in your web browser by navigating to `https://localhost:8080`.
 5. Scan the product's barcode by clicking the camera button on the home page.
 6. Click the "Generate Invoice" button to initiate the process.
 7. Review the retrieved product information on the preview page.

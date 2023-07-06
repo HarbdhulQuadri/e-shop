@@ -1,4 +1,7 @@
-const payload = require("../../../utility/globalFunction");
+const payload = require("../utility/globalFunction");
+const productModel = require("../models/products");
+const globalMessage = require("../utility/globalMessage");
+
 
 const { check, body, query, oneOf, header, validationResult } = require('express-validator');
 
@@ -10,102 +13,44 @@ function validation(req, res, next) {
     next()
 }
 
-const AddFeed = [
-    body('type').exists().withMessage('type required').trim(),
+const createProduct = [
+    // productName:data.productName,
+    //         barcode: data.barcode,
+    //         description: data.description,
+    //         price: data.price,
+    //         quantity: data.quantity,
+    //         category: data.category,
+    //         brand: data.brand,
+    body('productName').exists().withMessage('productName required').trim(),
     (req, res, next) => {
         validation(req, res, next);
     },
-    body('content').exists().withMessage('content required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }
-]
-
-const AddFeedLike = [
-    body('feedID').exists().withMessage('feedID required').trim(),
+    body('barcode').exists().withMessage('barcode required').trim(),
     (req, res, next) => {
         validation(req, res, next);
     },
-    body('type').exists().withMessage('type required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }
-]
-
-const AddFeedComment = [
-    body('feedID').exists().withMessage('feedID required').trim(),
+    body('description').exists().withMessage('description required').trim(),
     (req, res, next) => {
         validation(req, res, next);
     },
-    body('content').exists().withMessage('content required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }
-]
-
-const deleteFeedComment = [
-    body('feedID').exists().withMessage('feedID required').trim(),
+    body('price').exists().withMessage('price required').trim(),
     (req, res, next) => {
         validation(req, res, next);
     },
-    body('commentID').exists().withMessage('commentID required').trim(),
+    body('quantity').exists().withMessage('quantity required').trim(),
     (req, res, next) => {
         validation(req, res, next);
-    }
-]
-
-const deleteFeedLike = [
-    body('feedID').exists().withMessage('feedID required').trim(),
+    },
+    body('category').exists().withMessage('category required').trim(),
     (req, res, next) => {
         validation(req, res, next);
-    }
-]
-
-const deleteFeed = [
-    body('feedID').exists().withMessage('feedID required').trim(),
+    },
+    body('brand').exists().withMessage('brand required').trim(),
     (req, res, next) => {
         validation(req, res, next);
-    }
-]
-
-const getOneFeed = [
-    query('feedID').exists().withMessage('feedID required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }
-]
-
-const getFeed = [
-    query('limit').exists().withMessage('limit required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }, query('page').exists().withMessage('page required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }
-]
-
-const getOtherFeed = [
-    query('user_id').exists().withMessage('user_id required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    },query('limit').exists().withMessage('limit required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }, query('page').exists().withMessage('page required').trim(),
-    (req, res, next) => {
-        validation(req, res, next);
-    }
+    },
 ]
 
 module.exports = {
-    AddFeed,
-    AddFeedLike,
-    AddFeedComment,
-    getFeed,
-    getOneFeed,
-    getOtherFeed,
-    deleteFeed,
-    deleteFeedLike,
-    deleteFeedComment
+    createProduct,
 }
