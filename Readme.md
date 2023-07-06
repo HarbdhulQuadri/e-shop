@@ -1,7 +1,6 @@
 # E-SHOP
 
 E-Shop is a simple web application that allows users to scan a product's URL(Barcode) and generate an invoice for that product. It is designed to simplify the process of creating invoices for purchased products, making it convenient for both individuals and businesses. It is also designed for participation in #APISecurityHackathon organised by Treblle.
- - Integrated Treblle for API security and monitring purpose.
 
 ## Features
 
