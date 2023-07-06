@@ -1,4 +1,6 @@
-const payload = require("../../../utility/globalFunction");
+const payload = require("../utility/globalFunction");
+const productModel = require("../models/products");
+const globalMessage = require("../utility/globalMessage");
 
 const {
   check,
