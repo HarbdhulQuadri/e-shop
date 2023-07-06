@@ -3,6 +3,8 @@ const router = express.Router();
 
 // Auth
 const authMiddleware = require("../middleware/auth")
+const productMiddleware = require("../middleware/product")
+
 const limiter = require("../middleware/rateLimitMiddleware")
 
 const authController = require("../controllers/auth")
@@ -21,7 +23,7 @@ router.post('/api/v1/auth/register', authMiddleware.register, authController.Reg
 router.post('/api/v1/auth/login',limiter, authMiddleware.login, authController.Login);
 
 // product
-router.post('/api/v1/product', authMiddleware.getToken, productController.createProduct);
+router.post('/api/v1/product', productMiddleware.createProduct,authMiddleware.getToken, productController.createProduct);
 router.patch('/api/v1/product/:productID',limiter,authMiddleware.getToken, productController.editProduct);
 router.get('/api/v1/product/:productID',limiter,authMiddleware.getToken, productController.getOneProduct);
 router.get('/api/v1/product',limiter, authMiddleware.getToken, productController.getAllProducts);
